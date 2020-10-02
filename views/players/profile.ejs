@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel ="stylesheet" href="/css/app.css" />
+</head>
+<body>
+    <h1>Welcome <%=player.name%></h1>
+    <form action="/players/profile/<%=player.id%>?_method=PUT" method="POST">
+        Name: <input type="text" name="name" value='<%=player.name%>' /></br>
+        Username: <input type="text" name="username" value='<%=player.username%>'/></br>
+        Password: <input type="text" name="password" value='<%=player.password%>'/></br>
+        Team: <select name="teamId">  
+            <% var options = []; %>  
+            <% for(let i = 0; i < teams.length; i++) { %>   
+            <option value='<%= teams[i].id %>' 
+                <% if (teams[i].name === player.Team.name) { %>
+                    selected
+                <% } %>
+                ><%= teams[i].name %></option>
+             <% } %></select>
+               <br> Pokemon
+             <select name="pokemon"> 
+            <% for(let i = 0; i < pokemon.length; i++) { %>   
+            <option value='<%= pokemon[i].id %>'><%= pokemon[i].name %></option>
+             <% } %></select>
+
+        <input type ="submit" name="" value="Edit Profile" /></br>
+    </form>
+    <form  action="/players/profile/<%=player.id; %>?_method=DELETE" method="POST">
+        <input type ="submit" name="" value="Delete User" /></br>
+    </form>
+    Team: <%=player.Team.name%>
+    <h4>List of Pokemon the player has caught</h4>
+    <% for(let i =0; i<player.Pokemons.length ; i++) { %>
+        <li>
+            <%=player.Pokemons[i].name%> 
+        </li> <br>
+    <% } %>
+        <a href="/pokemon">View all Pokemon</a></br>
+        <a href="/players">Return to Homepage</a>
+    
+</body>
+</html>

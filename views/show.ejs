@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel ="stylesheet" href="/css/show.css" />
+</head>
+<body>
+    <h1>Pokemon Show Page</h1>
+    The Pokemon's name is <%=pokemon.name%>. <br/>
+    <img src="<%=pokemon.img%>" alt="picture of pokemon" />
+    <form action="/pokemon/<%=pokemon.id%>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete" /><br/>
+        <h4>List of Players who have caught this Pokemon</h4>
+    <% for(let i =0; i<pokemon.Players.length ; i++) { %>
+        <li>
+            <%=pokemon.Players[i].name%> <br>
+        </li>
+    <% } %>
+        <a href="/pokemon">Home</a>
+    </form>
+</body>
+</html>

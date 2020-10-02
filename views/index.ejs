@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel ="stylesheet" href="/css/app.css" />
+    <link rel ="stylesheet" href="/css/thumb.css" />
+</head>
+<body>
+    <h1>Welcome to Pokemon App</h1>
+
+    <nav>
+        <a href="/pokemon/new">Create a new pokemon</a>
+    </nav>
+
+    <ul>
+        <% for(let i=0; i<pokemon.length; i++) { %>
+        <li>
+            <a href="/pokemon/<%=pokemon[i].id%>"><%=pokemon[i].name%></a></br></br>
+            <img class = "thumbNail" src="<%=pokemon[i].img%>" /></br>
+            <form action="/pokemon/<%=pokemon[i].id%>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete" />
+            </form>
+            <a href="/pokemon/<%=pokemon[i].id%>/edit">Edit</a>
+        </li>    
+        <!-- <br/></br> -->
+        <% } %>
+        <a href="/players">Logout</a>
+    </ul>
+</body>
+</html>
